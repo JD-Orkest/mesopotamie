@@ -15,6 +15,7 @@ const sectionRef = ref(null)
 const imageRef   = ref(null)
 const img1Ref    = ref(null)
 const img2Ref    = ref(null)
+const baseUrl    = import.meta.env.BASE_URL
 
 onMounted(() => {
   if (!sectionRef.value) return
@@ -56,19 +57,12 @@ onMounted(() => {
 
           <!-- Image principale pivotée -->
           <div ref="img1Ref" class="chaos-img chaos-img--main">
-            <!--
-              ╔══════════════════════════════════════════════════════════╗
-              ║  PLACEHOLDER IMAGE                                       ║
-              ║  Intent : Tiamat — eaux primordiales en chaos,           ║
-              ║  abstraction noire et tourbillonnante, lave ou fumée.    ║
-              ║  Remplacez par :                                         ║
-              ║  <img src="/images/tiamat-chaos.jpg" alt="Tiamat" />    ║
-              ╚══════════════════════════════════════════════════════════╝
-            -->
-            <div
-              class="img-placeholder"
-              data-image-intent="Tiamat — eaux primordiales chaotiques, abstraction noire tourbillonnante (fumée, lave ou marbre noir)"
-            ></div>
+            <img
+              class="chaos-photo"
+              :src="`${baseUrl}images/tiamat-chaos.png`"
+              alt="Tiamat, eaux primordiales en chaos"
+              loading="lazy"
+            />
           </div>
 
           <!-- Cadre or (décoratif) superposé -->
@@ -76,19 +70,12 @@ onMounted(() => {
 
           <!-- Image secondaire décalée -->
           <div ref="img2Ref" class="chaos-img chaos-img--secondary">
-            <!--
-              ╔══════════════════════════════════════════════════════════╗
-              ║  PLACEHOLDER IMAGE                                       ║
-              ║  Intent : Fragment de tablette cunéiforme de l'Enuma     ║
-              ║  Elish ou représentation de Marduk armé de son filet.   ║
-              ║  Remplacez par :                                         ║
-              ║  <img src="/images/marduk-enuma.jpg" alt="Marduk" />    ║
-              ╚══════════════════════════════════════════════════════════╝
-            -->
-            <div
-              class="img-placeholder"
-              data-image-intent="Fragment de tablette de l'Enuma Elish ou bas-relief de Marduk armé de son filet"
-            ></div>
+            <img
+              class="chaos-photo"
+              :src="`${baseUrl}images/marduk-enuma.png`"
+              alt="Tablette ou relief associe a Marduk"
+              loading="lazy"
+            />
           </div>
         </div>
 
@@ -214,9 +201,11 @@ onMounted(() => {
   width: 65%;
 }
 
-.chaos-img .img-placeholder {
+.chaos-photo {
   aspect-ratio: 1;
   width: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* Cadres décoratifs */

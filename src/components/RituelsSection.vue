@@ -93,6 +93,8 @@ const moments = [
     title: 'La Descente de la Châsse',
     timing: 'Samedi soir',
     body: 'Les reliques de Sainte Waudru sont descendues de leur autel dans la collégiale et confiées aux autorités civiles. Le public chante l\'air du Doudou, scellant l\'union entre la sainte protectrice et les citoyens.',
+    imageSrc: 'https://pivotmedia.tourismewallonie.be/OTH-A0-00QQ-07FL/OTH-A0-00QQ-07FL.jpg',
+    imageAlt: 'Descente de la Chasse a Mons',
     imageIntent: 'Intérieur de la Collégiale Sainte-Waudru de Mons, lumières de cierges, châsse dorée en procession',
   },
   {
@@ -100,6 +102,8 @@ const moments = [
     title: 'La Procession du Car d\'Or',
     timing: 'Dimanche matin',
     body: 'La châsse est placée sur un char monumental tiré par six chevaux de trait. Des centaines de figurants reconstituent les confréries et corporations médiévales, défilant dans les rues de la ville.',
+    imageSrc: 'https://pivotmedia.tourismewallonie.be/OTH-A0-00QQ-07F4/OTH-A0-00QQ-07F4.jpg',
+    imageAlt: 'Procession du Car d\'Or',
     imageIntent: 'Car d\'Or — char monumental doré tiré par des chevaux, en procession dans les rues de Mons',
   },
   {
@@ -107,6 +111,8 @@ const moments = [
     title: 'La Montée du Car d\'Or',
     timing: 'Dimanche midi',
     body: 'Le char doit gravir d\'un seul élan la rampe pavée menant à la collégiale. La foule se masse derrière le char pour le pousser. Si le char échoue à monter, le malheur s\'abattra sur la ville.',
+    imageSrc: 'https://spgeng.rosselcdn.net/sites/default/files/dpistyles_v2/sp_16_9_864w/2025/06/15/node_1007803/56578914/public/2025/06/15/43148042.jpeg?itok=ZHmxj5Km1749984286',
+    imageAlt: 'Montee du Car d\'Or',
     imageIntent: 'Foule dense poussant le Car d\'Or dans la montée pavée de Mons, tension dramatique',
   },
   {
@@ -114,6 +120,8 @@ const moments = [
     title: 'Le Combat dit Lumeçon',
     timing: 'Dimanche après-midi',
     body: 'Sur la Grand-Place, Saint Georges affronte le Dragon devant des milliers de spectateurs. Le public participe activement en tentant d\'arracher le crin de la queue du monstre — et les Montois ne périront pas !',
+    imageSrc: 'https://www.lejde.be/wp-content/uploads/2022/06/MONS-_-DOUDOU-_-ducasse-25-11-20052914251.jpg',
+    imageAlt: 'Rite du Dragon sur la Grand-Place de Mons',
     imageIntent: 'Combat du Lumeçon — Saint Georges en costume jaune face au Dragon vert sur la Grand-Place de Mons, foule en délire',
   },
 ]
@@ -151,20 +159,13 @@ const moments = [
         </div>
 
         <div class="rituels-intro-image reveal">
-          <!--
-            ╔══════════════════════════════════════════════════════════╗
-            ║  PLACEHOLDER IMAGE                                       ║
-            ║  Intent : Vue aérienne de la Grand-Place de Mons         ║
-            ║  pendant la Ducasse, foule immense, atmosphère festive.  ║
-            ║  Remplacez par :                                         ║
-            ║  <img src="/images/ducasse-grand-place.jpg"              ║
-            ║       alt="La Ducasse de Mons" />                        ║
-            ╚══════════════════════════════════════════════════════════╝
-          -->
-          <div
-            class="img-placeholder"
-            data-image-intent="Vue aérienne de la Grand-Place de Mons pendant la Ducasse, foule, Car d'Or, ambiance festive"
-          ></div>
+          <img
+            class="rituels-intro-photo"
+            src="https://www.dhnet.be/resizer/v2/N42ZZOC76FBKFENODTOJXM5SYA.jpg?auth=4631a8041c98d1559cbbaed39b20cbb3e938204dbf628d5c0204f3ef303c625a&width=1200&height=800&quality=85&focal=960%2C480"
+            alt="Vue aerienne de la Grand-Place de Mons pendant la Ducasse"
+            loading="lazy"
+            referrerpolicy="no-referrer"
+          />
         </div>
       </div>
 
@@ -201,14 +202,16 @@ const moments = [
             class="moment-item"
           >
             <div class="moment-image">
-              <!--
-                ╔══════════════════════════════════════════════════════╗
-                ║  PLACEHOLDER IMAGE — Remplacez ce div par :          ║
-                ║  <img src="/images/moment-{{ moment.num }}.jpg"      ║
-                ║       :alt="moment.title" />                          ║
-                ╚══════════════════════════════════════════════════════╝
-              -->
+              <img
+                v-if="moment.imageSrc"
+                class="moment-image-img"
+                :src="moment.imageSrc"
+                :alt="moment.imageAlt || moment.title"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+              />
               <div
+                v-else
                 class="img-placeholder"
                 :data-image-intent="moment.imageIntent"
               ></div>
@@ -294,8 +297,11 @@ const moments = [
   max-width: none;
 }
 
-.rituels-intro-image .img-placeholder {
+.rituels-intro-photo {
   aspect-ratio: 4 / 5;
+  width: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* ── Table section ── */
@@ -346,6 +352,13 @@ const moments = [
 
 .moment-image .img-placeholder {
   aspect-ratio: 16 / 9;
+}
+
+.moment-image-img {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .moment-body {

@@ -12,6 +12,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const timelineRef = ref(null)
+const baseUrl = import.meta.env.BASE_URL
 
 onMounted(() => {
   if (!timelineRef.value) return
@@ -41,6 +42,7 @@ const steps = [
     date: '~1900 av. J.-C.',
     title: 'Marduk & Tiamat',
     body: 'Le motif du héros terrassant le dragon naît dans les plaines de Babylone. L\'Enuma Elish codifie le combat cosmique entre l\'ordre et le chaos. Ce schéma narratif rayonne depuis Babylone vers la Syrie, l\'Élam et le monde hellénistique.',
+    imageSrc: 'https://oraedes.fr/Kirjasto/Ressources/Encyclopedie/Sculpture/Reliefs/Babylone_incn~bas-relief~Marduk-zakir-sumi-scribe.jpg',
     imageIntent: 'Bas-relief babylonien du dieu Marduk ou du dragon Mushkhushshu gardant la porte d\'Ishtar, éclairage dramatique',
     imageAlt: 'Dragon Mushkhushshu babylonien',
   },
@@ -51,6 +53,7 @@ const steps = [
     date: '~1130 apr. J.-C.',
     title: 'Gilles de Chin & la Pucelette',
     body: 'Gilles de Chin, chambellan du Hainaut et croisé, affronte un dragon dans les marais de Wasmes. Il ramène la Pucelette saine et sauve, et rapporte une tête de crocodile du Nil depuis la Terre Sainte — preuve physique du mythe, réalité zoologique. Les croisés rechargent le folklore européen des éléments de la zoologie mythique mésopotamienne.',
+    imageSrc: `${baseUrl}images/transmission-2.png`,
     imageIntent: 'Chevalier médiéval en armure, scène de combat contre un dragon dans un marais (enluminure style médiéval sur fond sombre)',
     imageAlt: 'Gilles de Chin contre le Dragon de Wasmes',
     inverted: true,
@@ -62,6 +65,7 @@ const steps = [
     date: 'Attesté dès le XVe s.',
     title: 'La Tête de Crocodile',
     body: 'Le Musée du Doudou conserve une tête momifiée de crocodile du Nil. Pour la population médiévale du Hainaut, n\'ayant jamais vu de tels reptiles, cette tête curieuse était la preuve matérielle de l\'existence du dragon. L\'imagination populaire a transformé un animal exotique réel en une créature mythique, perpétuant la chaîne de transmission depuis Babylone.',
+    imageSrc: `${baseUrl}images/transmission-3.png`,
     imageIntent: 'Tête momifiée de crocodile du Nil ou vitrine de musée archéologique, éclairage de galerie sombre',
     imageAlt: 'Tête de crocodile du Musée du Doudou',
   },
@@ -113,14 +117,16 @@ const steps = [
 
           <!-- Image placeholder -->
           <div class="step-image reveal">
-            <!--
-              ╔══════════════════════════════════════════════════════════╗
-              ║  PLACEHOLDER IMAGE — Remplacez par :                     ║
-              ║  <img src="/images/transmission-{{ step.id }}.jpg"       ║
-              ║       :alt="step.imageAlt" />                            ║
-              ╚══════════════════════════════════════════════════════════╝
-            -->
+            <img
+              v-if="step.imageSrc"
+              class="step-image-img"
+              :src="step.imageSrc"
+              :alt="step.imageAlt"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            />
             <div
+              v-else
               class="img-placeholder"
               :data-image-intent="step.imageIntent"
             ></div>
@@ -212,6 +218,8 @@ const steps = [
   .timeline-step {
     grid-template-columns: auto 1fr;
     grid-template-rows: auto auto;
+    column-gap: 16px;
+    row-gap: 20px;
   }
 
   .timeline-step--inverted .step-text,
@@ -220,13 +228,22 @@ const steps = [
   }
 
   .timeline-node {
-    grid-row: span 2;
+    grid-column: 1;
+    grid-row: 1 / span 2;
     align-self: start;
     margin-top: 8px;
   }
 
+  .step-text {
+    grid-column: 2;
+    grid-row: 1;
+    min-width: 0;
+  }
+
   .step-image {
     grid-column: 2;
+    grid-row: 2;
+    min-width: 0;
   }
 }
 
@@ -290,5 +307,19 @@ const steps = [
 .step-image .img-placeholder {
   aspect-ratio: 4 / 3;
   width: 100%;
+}
+
+.step-image-img {
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .step-image-img,
+  .step-image .img-placeholder {
+    aspect-ratio: 16 / 10;
+  }
 }
 </style>

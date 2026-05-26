@@ -22,6 +22,8 @@ const epoques = [
     yearBig: '4500',
     title: 'Uruk & l\'Écriture Cunéiforme',
     body: 'L\'aube de l\'histoire enregistrée. L\'urbanisation, l\'invention de l\'écriture et les premières cités-États surgissant des plaines. Les Sumériens développent une cosmogonie où les forces de la nature doivent être domestiquées par le rite.',
+    imageSrc: 'https://mariellebrie.com/wp-content/uploads/2019/06/tablette-cuneiforme-mesopotamie-fara.jpg',
+    imageAlt: 'Tablette cunéiforme mésopotamienne',
     imageIntent: 'Tablette d\'argile cunéiforme sumérienne ou ziggurat d\'Uruk, fond sombre dramatique',
   },
   {
@@ -31,6 +33,8 @@ const epoques = [
     yearBig: '2340',
     title: 'Sargon le Grand',
     body: 'L\'unification des cités-États en le premier véritable empire mondial. Un tournant de puissance, de langue, et de synthèse mythologique. Les dieux guerriers prennent une importance croissante dans un panthéon syncrétique.',
+    imageSrc: 'https://gbaike-image.cdn.bcebos.com/f11f3a292df5e0fe9925ac48332e23a85edf8db1d46e/f11f3a292df5e0fe9925ac48332e23a85edf8db1d46e_url?x-bce-process=image/format,f_auto/resize,m_lfit,h_1024,limit_1',
+    imageAlt: 'Buste attribue a Sargon d\'Akkad',
     imageIntent: 'Buste de Sargon d\'Akkad en bronze, éclairage dramatique, fond sombre',
   },
   {
@@ -40,6 +44,8 @@ const epoques = [
     yearBig: '1800',
     title: 'Hammurabi & le Code des Lois',
     body: 'Loi, ordre, et la montée de Marduk. Hammurabi place le dieu au sommet du panthéon, faisant de sa victoire sur le chaos le mythe central de la civilisation mésopotamienne. Naissance de la jurisprudence mondiale.',
+    imageSrc: 'https://www.meisterdrucke.lu/kunstwerke/1260px/Mesopotamian_-_Mesopotamie_stele_in_diorite_of_the_Code_of_Laws_of_Hammurabi_%28or_Hammourabi%29_It_-_%28MeisterDrucke-973895%29.jpg',
+    imageAlt: 'Stele du Code de Hammurabi',
     imageIntent: 'Stèle du Code d\'Hammurabi ou représentation de Marduk/Babylone, éclairage dramatique',
   },
 ]
@@ -91,14 +97,16 @@ onMounted(() => {
         >
           <!-- Placeholder image avec grand chiffre en surimpression -->
           <div class="card-image-wrapper">
-            <!--
-              ╔══════════════════════════════════════════════════╗
-              ║  PLACEHOLDER IMAGE — Remplacez ce div par :     ║
-              ║  <img src="/images/{{ epoque.id }}.jpg"         ║
-              ║       :alt="epoque.title" />                     ║
-              ╚══════════════════════════════════════════════════╝
-            -->
+            <img
+              v-if="epoque.imageSrc"
+              class="card-image"
+              :src="epoque.imageSrc"
+              :alt="epoque.imageAlt || epoque.title"
+              loading="lazy"
+              referrerpolicy="no-referrer"
+            />
             <div
+              v-else
               class="img-placeholder"
               :data-image-intent="epoque.imageIntent"
             ></div>
@@ -184,6 +192,13 @@ onMounted(() => {
 .img-placeholder {
   aspect-ratio: 3 / 4;
   width: 100%;
+}
+
+.card-image {
+  aspect-ratio: 3 / 4;
+  width: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* Grand chiffre superposé */

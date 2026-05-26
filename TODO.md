@@ -19,16 +19,16 @@ Dossier cible : public/images/
 - [ ] sumer.jpg (Epoques)
 - [ ] akkad.jpg (Epoques)
 - [ ] babylone.jpg (Epoques)
-- [ ] tiamat-chaos.jpg (Chaoskampf)
-- [ ] marduk-enuma.jpg (Chaoskampf)
-- [ ] transmission-1.jpg (Transmission)
-- [ ] transmission-2.jpg (Transmission)
-- [ ] transmission-3.jpg (Transmission)
-- [ ] ducasse-grand-place.jpg (Rituels intro)
-- [ ] moment-01.jpg (Rituels)
-- [ ] moment-02.jpg (Rituels)
-- [ ] moment-03.jpg (Rituels)
-- [ ] moment-04.jpg (Rituels)
+- [ ] tiamat-chaos.png (Chaoskampf)
+- [ ] marduk-enuma.png (Chaoskampf)
+- [x] transmission-1 (Transmission) via URL web
+- [ ] transmission-2.png (Transmission)
+- [ ] transmission-3.png (Transmission)
+- [x] ducasse-grand-place (Rituels intro) via URL web
+- [x] moment-01 (Rituels) via URL web
+- [x] moment-02 (Rituels) via URL web
+- [x] moment-03 (Rituels) via URL web
+- [x] moment-04 (Rituels) via URL web
 - [ ] og-preview.jpg (partage reseaux / Open Graph)
 
 ## 3. Verification contenu
