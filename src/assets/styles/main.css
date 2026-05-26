@@ -1,0 +1,277 @@
+/* ============================================================
+   MÉSOPOTAMIE — Design System Global
+   ============================================================
+   Palette : The Void #0F1115 | Sable #E6DFD3 | Lapis #004F98 | Or #D4AF37
+   Typographie : Playfair Display (titres) | Inter (corps)
+   Formes : border-radius: 0 strict | aucune ombre portée
+   ============================================================ */
+
+/* ── Variables CSS ── */
+:root {
+  /* Couleurs */
+  --color-void:       #0F1115;
+  --color-surface:    #1C1B1C;
+  --color-sand:       #E6DFD3;
+  --color-sand-dim:   rgba(230, 223, 211, 0.60);
+  --color-sand-ghost: rgba(230, 223, 211, 0.20);
+  --color-lapis:      #004F98;
+  --color-lapis-hover:#0061BC;
+  --color-gold:       #D4AF37;
+
+  /* Typographie */
+  --font-display:     'Playfair Display', Georgia, serif;
+  --font-body:        'Inter', system-ui, sans-serif;
+
+  /* Tailles */
+  --text-display-xl:  clamp(56px, 10vw, 120px);
+  --text-display-lg:  clamp(36px, 6vw, 80px);
+  --text-headline-lg: clamp(28px, 4vw, 48px);
+  --text-body-lg:     18px;
+  --text-body-md:     16px;
+  --text-label:       12px;
+
+  /* Espacements */
+  --margin-desktop:   64px;
+  --margin-mobile:    24px;
+  --gutter:           32px;
+  --section-gap:      clamp(80px, 12vw, 160px);
+  --element-gap:      24px;
+
+  /* Transitions */
+  --ease-out:         cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-base:    0.6s;
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  overflow-x: hidden; /* évite le scroll horizontal sur iOS Safari */
+}
+
+body {
+  background-color: var(--color-void);
+  color: var(--color-sand);
+  font-family: var(--font-body);
+  font-size: var(--text-body-md);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* ── Barre de progression dorée ── */
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background-color: var(--color-gold);
+  z-index: 9999;
+  transform-origin: left center;
+  transition: width 0.1s linear;
+}
+
+/* ── Typographie ── */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-sand);
+}
+
+h1 { font-size: var(--text-display-xl); }
+h2 { font-size: var(--text-display-lg); }
+h3 { font-size: var(--text-headline-lg); font-weight: 500; letter-spacing: -0.01em; }
+
+p {
+  font-family: var(--font-body);
+  font-size: var(--text-body-lg);
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  color: var(--color-sand-dim);
+  max-width: 65ch;
+}
+
+/* Label style (métadonnées / navigation) */
+.label-caps {
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-sand-dim);
+}
+
+/* ── Grille 12 colonnes ── */
+.container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 var(--margin-mobile);
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--margin-desktop);
+  }
+}
+
+/* Grille CSS native */
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--gutter);
+}
+
+/* Colonnes utilitaires */
+.col-5  { grid-column: span 5; }
+.col-6  { grid-column: span 6; }
+.col-7  { grid-column: span 7; }
+.col-8  { grid-column: span 8; }
+.col-12 { grid-column: span 12; }
+
+@media (max-width: 768px) {
+  .col-5, .col-6, .col-7, .col-8, .col-12 {
+    grid-column: span 12;
+  }
+}
+
+/* ── Boutons ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-sand);
+  background: transparent;
+  border: 1px solid var(--color-sand);
+  border-radius: 0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--duration-base) var(--ease-out),
+              color var(--duration-base) var(--ease-out),
+              border-color var(--duration-base) var(--ease-out);
+}
+
+.btn:hover {
+  background: var(--color-lapis);
+  border-color: var(--color-lapis);
+  color: var(--color-sand);
+}
+
+/* ── Placeholders d'images ── */
+.img-placeholder {
+  position: relative;
+  width: 100%;
+  background-color: var(--color-surface);
+  border: 1px dashed var(--color-sand-ghost);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-placeholder::after {
+  content: attr(data-image-intent);
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  opacity: 0.7;
+  max-width: calc(100% - 24px);
+}
+
+/* L'image réelle (quand vous remplacez le placeholder) */
+.img-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Séparateur doré ── */
+.gold-line {
+  display: block;
+  width: 48px;
+  height: 2px;
+  background-color: var(--color-gold);
+  margin-bottom: 24px;
+}
+
+/* ── Éléments d'animation (état initial avant GSAP) ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* ── Tableau de comparaison ── */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 40px;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 16px 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-sand-ghost);
+  font-family: var(--font-body);
+  font-size: var(--text-body-md);
+  line-height: 1.6;
+  color: var(--color-sand-dim);
+  vertical-align: top;
+}
+
+.comparison-table th {
+  font-size: var(--text-label);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-sand);
+  background-color: transparent;
+  border-bottom: 1px solid var(--color-sand-ghost);
+}
+
+.comparison-table tr:last-child td {
+  border-bottom: none;
+}
+
+.comparison-table td:first-child {
+  color: var(--color-sand);
+  font-weight: 600;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-void);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-sand-ghost);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold);
+}
