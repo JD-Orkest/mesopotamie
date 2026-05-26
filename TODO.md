@@ -9,7 +9,7 @@ Etat actuel :
 ## 1. Taches prioritaires
 
 - [ ] Verifier GitHub Pages : Settings > Pages > Source = GitHub Actions.
-- [ ] Pousser les derniers changements sur main pour redeployer le site.
+- [x] Pousser les derniers changements sur main pour redeployer le site.
 - [ ] Verifier l'URL finale : https://jd-orkest.github.io/mesopotamie/.
 
 ## 2. Toutes les images a ajouter
