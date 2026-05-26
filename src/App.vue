@@ -13,7 +13,6 @@ import EpoquesSection      from './components/EpoquesSection.vue'
 import ChaoskampfSection   from './components/ChaoskampfSection.vue'
 import TransmissionSection from './components/TransmissionSection.vue'
 import RituelsSection      from './components/RituelsSection.vue'
-import AnatomieSection     from './components/AnatomieSection.vue'
 import TheFooter           from './components/TheFooter.vue'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -70,7 +69,6 @@ onUnmounted(() => {
       <ChaoskampfSection />
       <TransmissionSection />
       <RituelsSection />
-      <AnatomieSection />
     </main>
 
     <TheFooter />

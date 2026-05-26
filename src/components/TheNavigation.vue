@@ -25,7 +25,6 @@ const navItems = [
   { label: 'Chaoskampf',    id: 'chaoskampf'   },
   { label: 'Transmission',  id: 'transmission' },
   { label: 'Rituels',       id: 'rituels'      },
-  { label: 'Anatomie',      id: 'anatomie'     },
 ]
 </script>
 

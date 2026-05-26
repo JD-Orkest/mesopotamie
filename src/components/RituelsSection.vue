@@ -226,6 +226,19 @@ const moments = [
         </div>
       </div>
 
+      <!-- Conclusion éditoriale -->
+      <div class="conclusion reveal">
+        <p class="label-caps conclusion-label">VI — Conclusion</p>
+        <blockquote class="conclusion-quote">
+          <p>
+            De Babylone a Mons, les recits ne se contentent pas de survivre :
+            ils se transforment avec les societes qui les portent. Entre archive,
+            rite et transmission, ce parcours montre une memoire en mouvement,
+            toujours reinterpretee, jamais figee.
+          </p>
+        </blockquote>
+      </div>
+
     </div>
   </section>
 </template>
@@ -368,6 +381,31 @@ const moments = [
   font-size: var(--text-body-md);
   color: var(--color-sand-dim);
   line-height: 1.65;
+  max-width: none;
+}
+
+/* ── Conclusion ── */
+.conclusion {
+  border-top: 1px solid var(--color-sand-ghost);
+  padding-top: 72px;
+  margin-top: 72px;
+}
+
+.conclusion-label {
+  color: var(--color-gold);
+  margin-bottom: 24px;
+}
+
+.conclusion-quote {
+  max-width: 75ch;
+}
+
+.conclusion-quote p {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2.5vw, 28px);
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--color-sand);
   max-width: none;
 }
 </style>
