@@ -110,7 +110,7 @@ onMounted(() => {
               class="img-placeholder"
               :data-image-intent="epoque.imageIntent"
             ></div>
-            <span class="card-year-bg" aria-hidden="true">{{ epoque.yearBig }}</span>
+            <!-- <span class="card-year-bg" aria-hidden="true">{{ epoque.yearBig }}</span> -->
           </div>
 
           <!-- Contenu texte -->
